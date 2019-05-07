@@ -1,0 +1,135 @@
+{
+    "title": "Google Slides",
+    "description": "Reads and writes Google Slides presentations.",
+    "docsUrl": "https://developers.google.com/slides/",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/slides/v1/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://slides.googleapis.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "Oauth2": {
+                "label": "Oauth 2.0 authentication",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "slides_presentations_create": {
+            "main": "./lib/actions/slides_presentations_create.js",
+            "title": "Creates a blank presentation using the title given in the request. If a\n`presentationId` is provided, it is used as the ID of the new presentation.\nOtherwise, a new ID is generated. Other fields in the request, including\nany provided content, are ignored.\nReturns the created presentation.",
+            "description": "Creates a blank presentation using the title given in the request. If a\n`presentationId` is provided, it is used as the ID of the new presentation.\nOtherwise, a new ID is generated. Other fields in the request, including\nany provided content, are ignored.\nReturns the created presentation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/slides_presentations_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "slides_presentations_get": {
+            "main": "./lib/actions/slides_presentations_get.js",
+            "title": "Gets the latest version of the specified presentation.",
+            "description": "Gets the latest version of the specified presentation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/slides_presentations_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "slides_presentations_pages_get": {
+            "main": "./lib/actions/slides_presentations_pages_get.js",
+            "title": "Gets the latest version of the specified page in the presentation.",
+            "description": "Gets the latest version of the specified page in the presentation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/slides_presentations_pages_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "slides_presentations_pages_getThumbnail": {
+            "main": "./lib/actions/slides_presentations_pages_getThumbnail.js",
+            "title": "Generates a thumbnail of the latest version of the specified page in the\npresentation and returns a URL to the thumbnail image.\n\nThis request counts as an [expensive read request](/slides/limits) for\nquota purposes.",
+            "description": "Generates a thumbnail of the latest version of the specified page in the\npresentation and returns a URL to the thumbnail image.\n\nThis request counts as an [expensive read request](/slides/limits) for\nquota purposes.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/slides_presentations_pages_getThumbnail.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "slides_presentations_batchUpdate": {
+            "main": "./lib/actions/slides_presentations_batchUpdate.js",
+            "title": "Applies one or more updates to the presentation.\n\nEach request is validated before\nbeing applied. If any request is not valid, then the entire request will\nfail and nothing will be applied.\n\nSome requests have replies to\ngive you some information about how they are applied. Other requests do\nnot need to return information; these each return an empty reply.\nThe order of replies matches that of the requests.\n\nFor example, suppose you call batchUpdate with four updates, and only the\nthird one returns information. The response would have two empty replies:\nthe reply to the third request, and another empty reply, in that order.\n\nBecause other users may be editing the presentation, the presentation\nmight not exactly reflect your changes: your changes may\nbe altered with respect to collaborator changes. If there are no\ncollaborators, the presentation should reflect your changes. In any case,\nthe updates in your request are guaranteed to be applied together\natomically.",
+            "description": "Applies one or more updates to the presentation.\n\nEach request is validated before\nbeing applied. If any request is not valid, then the entire request will\nfail and nothing will be applied.\n\nSome requests have replies to\ngive you some information about how they are applied. Other requests do\nnot need to return information; these each return an empty reply.\nThe order of replies matches that of the requests.\n\nFor example, suppose you call batchUpdate with four updates, and only the\nthird one returns information. The response would have two empty replies:\nthe reply to the third request, and another empty reply, in that order.\n\nBecause other users may be editing the presentation, the presentation\nmight not exactly reflect your changes: your changes may\nbe altered with respect to collaborator changes. If there are no\ncollaborators, the presentation should reflect your changes. In any case,\nthe updates in your request are guaranteed to be applied together\natomically.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/slides_presentations_batchUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
