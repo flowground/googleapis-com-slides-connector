@@ -5,7 +5,7 @@
 A generated **flow**ground connector for the Google Slides API (version v1).
 
 Generated from: https://api.apis.guru/v2/specs/googleapis.com/slides/v1/swagger.json<br/>
-Generated at: 2019-05-07T17:41:59+03:00
+Generated at: 2019-05-23T12:13:40+03:00
 
 ## API Description
 

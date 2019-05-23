@@ -38668,7 +38668,7 @@
                 "description": "Oauth 2.0 authentication",
                 "type": "oauth2",
                 "flows": {
-                    "implicit": {
+                    "authorizationCode": {
                         "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
                         "scopes": {
                             "https://www.googleapis.com/auth/drive": "See, edit, create, and delete all of your Google Drive files",
@@ -38678,7 +38678,8 @@
                             "https://www.googleapis.com/auth/presentations.readonly": "View your Google Slides presentations",
                             "https://www.googleapis.com/auth/spreadsheets": "See, edit, create, and delete your spreadsheets in Google Drive",
                             "https://www.googleapis.com/auth/spreadsheets.readonly": "View your Google Spreadsheets"
-                        }
+                        },
+                        "tokenUrl": "https://www.googleapis.com/oauth2/v4/token"
                     }
                 }
             }
